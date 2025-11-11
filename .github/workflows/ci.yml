@@ -1,0 +1,12 @@
+on:
+    pull_request:
+        branches:
+            - main
+        types: ["opened", "synchronize"]
+
+jobs:
+    call_tests:
+        uses: "./.github/workflows/tests.yml"
+    call_build:
+        needs: call_tests
+        uses: "./.github/workflows/build.yml"
