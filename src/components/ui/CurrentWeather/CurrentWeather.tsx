@@ -18,7 +18,10 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({
   city,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div
+      className="flex flex-col items-center justify-center"
+      aria-label="Current weather information"
+    >
       <Image
         src={`/images/${weatherIcon}.svg`}
         alt="Current weather icon"
@@ -27,10 +30,13 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({
         className="-mt-15"
         loading="eager"
       />
-      <h1 className="text-[7rem] font-bold -mt-20 text-foreground">
+      <h1
+        className="text-[7rem] font-bold -mt-20 text-foreground"
+        aria-label="Current temperature"
+      >
         {Math.floor(temperature)}°C
       </h1>
-      <p className="city -mt-4 mb-2">
+      <p className="city -mt-4 mb-2" aria-label="City name">
         Showing weather for <b>{city}</b>
       </p>
       <WindAndHumidity windSpeed={windSpeed} humidity={humidity} />

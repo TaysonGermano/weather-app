@@ -20,6 +20,7 @@ const RefreshBtn: React.FC<RefreshBtnProps> = ({ className }) => {
         className,
       )}
       title="Refresh location"
+      aria-label="Refresh location"
     >
       <RotateCcw />
     </button>

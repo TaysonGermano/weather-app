@@ -18,13 +18,14 @@ const WindAndHumidity: React.FC<WindAndHumidityProps> = ({
         'more-details text-foreground-secondary flex gap-4',
         className,
       )}
+      aria-label="Wind and humidity information"
     >
-      <div className="flex gap-2">
-        <Wind />
+      <div className="flex gap-2" aria-label="Wind speed">
+        <Wind aria-hidden="true" />
         {Math.floor(windSpeed)} km/h
       </div>
-      <div className="flex gap-2">
-        <Droplet />
+      <div className="flex gap-2" aria-label="Humidity">
+        <Droplet aria-hidden="true" />
         {Math.floor(humidity)}%
       </div>
     </div>

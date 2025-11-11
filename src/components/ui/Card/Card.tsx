@@ -7,7 +7,11 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ children, className }) => {
   return (
-    <div className={twMerge('rounded-lg bg-background p-6', className)}>
+    <div
+      className={twMerge('rounded-lg bg-background p-6', className)}
+      role="article"
+      aria-label="card"
+    >
       {children}
     </div>
   );
