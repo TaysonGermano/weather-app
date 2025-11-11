@@ -1,56 +1,11 @@
 'use client';
 import DayWeatherInfoCard from '@/components/ui/DayWeatherInfoCard/DayWeatherInfoCard';
-import { DaysOfWeek, WeatherIcon } from '@/utils/types';
+import { WeatherIcon } from '@/utils/types';
 import CurrentWeather from '@/components/ui/CurrentWeather/CurrentWeather';
 import RefreshBtn from '@/components/ui/RefreshBtn/RefreshBtn';
 import useGetCurrentWeather from '@/hooks/useGetCurrentWeather';
 import Skeleton from './Skeleton';
-
-type daylyWeatherDataType = {
-  day: DaysOfWeek;
-  maxTemp: number;
-  minTemp: number;
-  weatherIcon: WeatherIcon;
-};
-
-const dailyWeatherData: daylyWeatherDataType[] = [
-  {
-    day: 'Mon',
-    maxTemp: 22,
-    minTemp: 12,
-    weatherIcon: 'atmosphere',
-  },
-  {
-    day: 'Tue',
-    maxTemp: 20,
-    minTemp: 10,
-    weatherIcon: 'clear',
-  },
-  {
-    day: 'Wed',
-    maxTemp: 18,
-    minTemp: 9,
-    weatherIcon: 'rain',
-  },
-  {
-    day: 'Thu',
-    maxTemp: 17,
-    minTemp: 8,
-    weatherIcon: 'thunderstorm',
-  },
-  {
-    day: 'Fri',
-    maxTemp: 19,
-    minTemp: 11,
-    weatherIcon: 'clouds',
-  },
-  {
-    day: 'Sat',
-    maxTemp: 21,
-    minTemp: 13,
-    weatherIcon: 'snow',
-  },
-];
+import { THIS_WEEK_WEATHER_DATA } from '@/utils/contants';
 
 export default function WeatherDetails() {
   const { isLoading, error, data } = useGetCurrentWeather();
@@ -76,9 +31,9 @@ export default function WeatherDetails() {
       <section className="week-weather grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         {/* Note: I just thought of adding this here for illustration purposes */}
         {/* if I had to get a whole week of weather data :) */}
-        {dailyWeatherData.map((dayData, index) => (
+        {THIS_WEEK_WEATHER_DATA.map((dayData) => (
           <DayWeatherInfoCard
-            key={index}
+            key={dayData.day}
             day={dayData.day}
             maxTemp={dayData.maxTemp}
             minTemp={dayData.minTemp}

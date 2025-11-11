@@ -4,10 +4,11 @@ import { getCurrentLocation } from '@/utils/helpers';
 import { useQuery } from '@tanstack/react-query';
 
 const useGetCurrentWeather = () => {
-  const { coords, setCoords } = store.getState();
+  const coords = store.getState().coords;
+  const setCoords = store.getState().setCoords;
 
   return useQuery({
-    queryKey: ['current-weather', coords],
+    queryKey: ['current-weather'],
     queryFn: async () => {
       if (coords) {
         const resp = await httpClient.get('/', {
