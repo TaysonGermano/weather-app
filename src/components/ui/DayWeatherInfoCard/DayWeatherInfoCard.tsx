@@ -26,9 +26,19 @@ const DayWeatherInfoCard: React.FC<DayWeatherInfoCardProps> = ({
           height={80}
           loading="eager"
         />
-        <div className="flex space-x-4">
-          <span className="text-foreground font-semibold">{maxTemp}°C</span>
-          <span className="text-foreground-muted">{minTemp}°C</span>
+        <div className="flex space-x-4" aria-label="Temperature range">
+          <span
+            className="text-foreground font-semibold"
+            aria-label="Maximum temperature"
+          >
+            {maxTemp}°C
+          </span>
+          <span
+            className="text-foreground-muted"
+            aria-label="Minimum temperature"
+          >
+            {minTemp}°C
+          </span>
         </div>
       </div>
     </Card>
