@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import WindAndHumidity from '../WindAndHumidity/WindAndHumidity';
-import { WeatherIcon } from '@/app/utils/types';
+import { WeatherIcon } from '@/utils/types';
 
 interface CurrentWeatherProps {
   windSpeed: number;
@@ -24,10 +24,11 @@ const CurrentWeather: React.FC<CurrentWeatherProps> = ({
         alt="Current weather icon"
         width={220}
         height={220}
-        className="-mt-10"
+        className="-mt-15"
+        loading="eager"
       />
       <h1 className="text-[7rem] font-bold -mt-20 text-foreground">
-        {temperature}°C
+        {Math.floor(temperature)}°C
       </h1>
       <p className="city -mt-4 mb-2">
         Showing weather for <b>{city}</b>
