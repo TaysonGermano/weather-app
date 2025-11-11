@@ -21,11 +21,11 @@ const WindAndHumidity: React.FC<WindAndHumidityProps> = ({
     >
       <div className="flex gap-2">
         <Wind />
-        {windSpeed} km/h
+        {Math.floor(windSpeed)} km/h
       </div>
       <div className="flex gap-2">
         <Droplet />
-        {humidity}%
+        {Math.floor(humidity)}%
       </div>
     </div>
   );

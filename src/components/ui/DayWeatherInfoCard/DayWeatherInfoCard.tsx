@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Card from '../Card/Card';
-import { DaysOfWeek, WeatherIcon } from '@/app/utils/types';
+import { DaysOfWeek, WeatherIcon } from '@/utils/types';
 
 interface DayWeatherInfoCardProps {
   day: DaysOfWeek;
@@ -24,6 +24,7 @@ const DayWeatherInfoCard: React.FC<DayWeatherInfoCardProps> = ({
           alt={`${day} weather icon`}
           width={80}
           height={80}
+          loading="eager"
         />
         <div className="flex space-x-4">
           <span className="text-foreground font-semibold">{maxTemp}°C</span>
