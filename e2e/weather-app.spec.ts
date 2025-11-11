@@ -5,6 +5,51 @@ test.use({
   permissions: ['geolocation'],
 });
 
+// Mock OpenWeatherMap API
+test.beforeEach(async ({ page }) => {
+  await page.route('**/data/2.5/weather**', (route) => {
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        coord: { lon: 12.4924, lat: 41.8902 },
+        weather: [
+          {
+            id: 800,
+            main: 'Clear',
+            description: 'clear sky',
+            icon: '01d',
+          },
+        ],
+        base: 'stations',
+        main: {
+          temp: 298.15,
+          feels_like: 298.45,
+          temp_min: 296.15,
+          temp_max: 300.15,
+          pressure: 1012,
+          humidity: 40,
+        },
+        visibility: 10000,
+        wind: { speed: 3.6, deg: 120 },
+        clouds: { all: 0 },
+        dt: 1600000000,
+        sys: {
+          type: 1,
+          id: 6752,
+          country: 'IT',
+          sunrise: 1600000000,
+          sunset: 1600043200,
+        },
+        timezone: 7200,
+        id: 3169070,
+        name: 'Rome',
+        cod: 200,
+      }),
+    });
+  });
+});
+
 test.describe('Weather App', () => {
   test('should load and display the weather app', async ({ page }) => {
     await page.goto('/');
